@@ -11,9 +11,9 @@ public class FileProcessWithLambdaExample {
 
   private static final String FILE_LOCATION = "src/test/resources/data.txt";
 
-  public String processFile() throws IOException {
+  public String processFile(BufferedReaderProcessor p) throws IOException {
     try (BufferedReader br = new BufferedReader(new FileReader(FILE_LOCATION))) {
-      return br.readLine();
+      return p.process(br);
     }
   }
 }
