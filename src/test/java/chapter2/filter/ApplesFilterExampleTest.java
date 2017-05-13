@@ -1,28 +1,29 @@
 package chapter2.filter;
 
 import chapter2.Apple;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * @author Olavi
  */
-class ApplesFilterExampleTest {
+public class ApplesFilterExampleTest {
 
   private ApplesFilterExample example;
 
-  @BeforeEach
-  void setUp() {
+  @Before
+  public void setUp() {
     example = new ApplesFilterExample();
   }
 
   @Test
-  void testHeavyApples() throws Exception {
+  public void testHeavyApples() throws Exception {
     List<Apple> apples = new ArrayList<>();
     apples.add(Apple.create("green", 120));
     apples.add(Apple.create("green", 160));
@@ -39,7 +40,7 @@ class ApplesFilterExampleTest {
   }
 
   @Test
-  void testGreenApples() throws Exception {
+  public void testGreenApples() throws Exception {
     List<Apple> apples = new ArrayList<>();
     apples.add(Apple.create("green", 110));
     apples.add(Apple.create("red", 110));

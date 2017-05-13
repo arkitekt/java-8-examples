@@ -1,45 +1,45 @@
 package chapter2.formatter;
 
 import chapter2.Apple;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Olavi
  */
-class ApplesPrintingExampleTest {
+public class ApplesPrintingExampleTest {
 
   private ApplesPrintingExample example;
   private ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-  @BeforeEach
-  void setUp() {
+  @Before
+  public void setUp() {
     System.setOut(new PrintStream(outputStream));
     example = new ApplesPrintingExample();
   }
 
-  @AfterEach
-  void tearDown() {
+  @After
+  public void tearDown() {
     System.setOut(null);
   }
 
   @Test
-  void testFancyResult() {
+  public void testFancyResult() {
     example.prettyPrintApples(createInventory(), new AppleFancyFormatter());
 
     assertEquals("A light green apple\nA heavy red apple\n", outputStream.toString());
   }
 
   @Test
-  void testSimpleResult() throws Exception {
+  public void testSimpleResult() throws Exception {
     example.prettyPrintApples(createInventory(), new AppleSimpleFormatter());
 
     assertEquals("An apple of 120 g\nAn apple of 180 g\n", outputStream.toString());
