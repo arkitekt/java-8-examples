@@ -16,7 +16,7 @@ public class TestSorting {
   @Test
   public void testSortingOfStrings() throws Exception {
     List<String> source = Arrays.asList("t", "a", "f", "q");
-    source.sort((one, other) -> one.compareToIgnoreCase(other));
+    source.sort(String::compareToIgnoreCase);
 
     assertThat(source.toString(), is("[a, f, q, t]"));
   }
