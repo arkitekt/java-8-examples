@@ -48,4 +48,39 @@ public class GroupingByExamplesTest {
     assertThat(groupedByCaloricLevel.get(NORMAL).size(), is(4));
     assertThat(groupedByCaloricLevel.get(FAT).size(), is(1));
   }
+
+  @Test
+  public void testGroupingByDishTypeAndCaloricLevel() throws Exception {
+    Map<Dish.Type, Map<GroupingByExamples.CaloricLevel, List<Dish>>> result = uut.groupDishesByTypeAndCaloricLevel();
+
+    assertThat(result.isEmpty(), is(false));
+    assertThat(result.size(), is(3));
+    assertThat(result, hasKey(FISH));
+    assertThat(result, hasKey(MEAT));
+    assertThat(result, hasKey(OTHER));
+
+    assertThat(result.get(FISH).size(), is(2));
+    assertThat(result.get(MEAT).size(), is(3));
+    assertThat(result.get(OTHER).size(), is(2));
+
+    assertThat(result.get(FISH).containsKey(DIET), is(true));
+    assertThat(result.get(FISH).containsKey(NORMAL), is(true));
+
+    assertThat(result.get(FISH).get(DIET).size(), is(1));
+    assertThat(result.get(FISH).get(NORMAL).size(), is(1));
+
+    assertThat(result.get(MEAT).containsKey(DIET), is(true));
+    assertThat(result.get(MEAT).containsKey(NORMAL), is(true));
+    assertThat(result.get(MEAT).containsKey(FAT), is(true));
+
+    assertThat(result.get(MEAT).get(DIET).size(), is(1));
+    assertThat(result.get(MEAT).get(NORMAL).size(), is(1));
+    assertThat(result.get(MEAT).get(FAT).size(), is(1));
+
+    assertThat(result.get(OTHER).containsKey(DIET), is(true));
+    assertThat(result.get(OTHER).containsKey(NORMAL), is(true));
+
+    assertThat(result.get(OTHER).get(DIET).size(), is(2));
+    assertThat(result.get(OTHER).get(NORMAL).size(), is(2));
+  }
 }
