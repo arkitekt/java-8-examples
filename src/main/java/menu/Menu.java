@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Menu {
 
-  public List<Dish> getMenu() {
+  public static List<Dish> getDishes() {
     return Arrays.asList(
       new Dish("pork", false, 800, Dish.Type.MEAT),
       new Dish("beef", false, 700, Dish.Type.MEAT),
