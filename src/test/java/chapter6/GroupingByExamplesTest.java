@@ -98,4 +98,13 @@ public class GroupingByExamplesTest {
     assertThat(result.get(OTHER), is(4L));
   }
 
+  @Test
+  public void testMostCaloricDishForGroup() throws Exception {
+    Map<Dish.Type, Dish> result = uut.findMostCaloricDishesForGroup();
+
+    assertThat(result.size(), is(3));
+    assertThat(result.get(FISH).getName(), is("salmon"));
+    assertThat(result.get(MEAT).getName(), is("pork"));
+    assertThat(result.get(OTHER).getName(), is("pizza"));
+  }
 }

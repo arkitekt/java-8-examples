@@ -5,10 +5,11 @@ import menu.Menu;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.*;
 
 public class GroupingByExamples {
 
@@ -44,5 +45,9 @@ public class GroupingByExamples {
 
   public Map<Dish.Type, Long> countSubGroupItems() {
     return Menu.getDishes().stream().collect(groupingBy(Dish::getType, counting()));
+  }
+
+  public Map<Dish.Type, Dish> findMostCaloricDishesForGroup() {
+    return Menu.getDishes().stream().collect(groupingBy(Dish::getType, collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get)));
   }
 }
