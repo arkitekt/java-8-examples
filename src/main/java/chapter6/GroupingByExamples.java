@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class GroupingByExamples {
@@ -39,5 +40,9 @@ public class GroupingByExamples {
         return CaloricLevel.FAT;
       }
     };
+  }
+
+  public Map<Dish.Type, Long> countSubGroupItems() {
+    return Menu.getDishes().stream().collect(groupingBy(Dish::getType, counting()));
   }
 }

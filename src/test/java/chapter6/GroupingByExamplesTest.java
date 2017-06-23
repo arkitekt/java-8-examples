@@ -83,4 +83,19 @@ public class GroupingByExamplesTest {
     assertThat(result.get(OTHER).get(DIET).size(), is(2));
     assertThat(result.get(OTHER).get(NORMAL).size(), is(2));
   }
+
+  @Test
+  public void testCountingSubGroupItems() throws Exception {
+    Map<Dish.Type, Long> result = uut.countSubGroupItems();
+
+    assertThat(result.size(), is(3));
+    assertThat(result, hasKey(FISH));
+    assertThat(result, hasKey(MEAT));
+    assertThat(result, hasKey(OTHER));
+
+    assertThat(result.get(FISH), is(2L));
+    assertThat(result.get(MEAT), is(3L));
+    assertThat(result.get(OTHER), is(4L));
+  }
+
 }
