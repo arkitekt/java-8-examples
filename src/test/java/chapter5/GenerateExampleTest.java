@@ -13,10 +13,10 @@ import static org.junit.Assert.assertThat;
 public class GenerateExampleTest {
 
   private GenerateExample uut;
-  private ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+  private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     System.setOut(new PrintStream(outputStream));
     uut = new GenerateExample();
   }
